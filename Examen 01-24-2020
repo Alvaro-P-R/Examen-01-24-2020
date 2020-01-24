@@ -1,0 +1,73 @@
+Powershell
+-------------------------------------------------------------------
+
+Write-Host "Que opcion desea realizar"
+Write-Host " 1º  Eliminar trabajos que sean mayores a 10mb  "    
+Write-Host " 2º Realizar una conexion por ssh               "
+Write-Host " 3º Cargar una regla en el fireawall            " 
+
+$opcion= Read-Host "Introduzca un valor"
+
+if($opcion -eq 3){
+
+$New-NetFirewallRule -DisplayName $nombre -Action $accion -Direction $direccion -Enabled True -Protocol $protocolo
+}
+
+}
+-------------------------------------------------------------------
+
+
+Get-PrintJob "brother color Leg Type1 Class Driver"
+
+
+Get-PrintJob -PrinterName "Brother color Leg Type Class Driver" select 
+
+
+
+
+
+Add-Printer -Name "impresora 1" -DriverName "Brother Color Leg Type1 Class Driver" -PortName "portprompt:"
+
+Add-Printer -Name "mxdw 2" -DriverName "Microsoft XPS Document Writer v4" -PortName "portprompt:"
+
+
+$output = Invoke-Command -Session $Session -ScriptBlock {
+ Get-WmiObject -Class win32_printer
+}
+
+
+
+
+
+
+-------------------------------------------------------------------
+
+
+PhP
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<title>P001</title>
+</head>
+
+<body>
+	<?php
+	
+		$nombre = htmlspecialchars($_GET['nombre']); 
+		
+		$var = "./ini/datos.ini";
+		$base = parse_ini_file($var);		
+		$php = new PDO($base["baseDeDatos"],$base["usuario"],$base["password"]);
+		
+		$con = $php->prepare("INSERT INTO encabezados VALUES (3,:tex);");
+		$con->bindParam(':tex',$nombre);
+		$con->execute();
+
+		//$resultado = $registros[0][1];
+	?>
+	<h1><?php echo "buen trabajo" ?></h1>
+</body>
+
+</html>
